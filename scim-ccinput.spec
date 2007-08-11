@@ -1,7 +1,5 @@
 %define version   0.3.1
-%define release   %mkrel 1
-
-%define scim_version   1.4.0
+%define release   %mkrel 2
 
 %define libname_orig lib%{name}
 %define libname %mklibname %{name} 0
@@ -16,9 +14,8 @@ URL:       http://www.scim-im.org
 Source0:   %{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        %{libname} = %{version}-%{release}
-Requires:        scim >= %{scim_version}
-BuildRequires:   scim-devel >= %{scim_version}
-BuildRequires:   automake1.8, libltdl-devel
+BuildRequires:   scim-devel >= 1.4.7-3mdk
+BuildRequires:   automake, libltdl-devel
 
 %description
 Scim-ccinput is an SCIM IMEngine module for CCInput.
@@ -28,7 +25,6 @@ CCInput is another Pinyin input method for Chinese.
 %package -n %{libname}
 Summary:    Scim-ccinput library
 Group:      System/Internationalization
-Provides:   %{libname_orig} = %{version}-%{release}
 
 %description -n %{libname}
 scim-ccinput library.
@@ -49,7 +45,7 @@ chmod -x AUTHORS ChangeLog COPYING README
 %makeinstall_std mkinstalldirs='mkdir -p'
 
 # remove unnecessary files
-rm -f %{buildroot}%{_libdir}/scim-1.0/*/*.{a,la}
+rm -f %{buildroot}%{scim_plugins_dir}/*/*.{a,la}
 
 %find_lang ccinput
 
@@ -69,7 +65,5 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING
-%{_libdir}/scim-1.0/IMEngine/*.so
-%{_libdir}/scim-1.0/SetupUI/*.so
-
-
+%{scim_plugins_dir}/IMEngine/*.so
+%{scim_plugins_dir}/SetupUI/*.so
