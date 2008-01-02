@@ -12,6 +12,7 @@ Group:     System/Internationalization
 License:   GPL
 URL:       http://www.scim-im.org
 Source0:   %{name}-%{version}.tar.bz2
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        %{libname} = %{version}-%{release}
 BuildRequires:   scim-devel >= 1.4.7-3mdk
 BuildRequires:   automake, libltdl-devel
