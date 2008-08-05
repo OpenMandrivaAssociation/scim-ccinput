@@ -12,26 +12,20 @@ Group:     System/Internationalization
 License:   GPL
 URL:       http://www.scim-im.org
 Source0:   %{name}-%{version}.tar.bz2
+Patch0:	scim-ccinput-0.3.1-gcc43.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:        %{libname} = %{version}-%{release}
 BuildRequires:   scim-devel >= 1.4.7-3mdk
 BuildRequires:   automake, libltdl-devel
+Obsoletes: %{libname}
+Requires: scim-client = %scim_api
 
 %description
 Scim-ccinput is an SCIM IMEngine module for CCInput.
 CCInput is another Pinyin input method for Chinese.
 
-
-%package -n %{libname}
-Summary:    Scim-ccinput library
-Group:      System/Internationalization
-
-%description -n %{libname}
-scim-ccinput library.
-
-
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 [[ ! -x configure ]] && ./bootstrap
@@ -65,9 +59,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README
 %{_datadir}/scim/ccinput/*
 %{_datadir}/scim/icons/*.png
-
-%files -n %{libname}
-%defattr(-,root,root)
-%doc COPYING
 %{scim_plugins_dir}/IMEngine/*.so
 %{scim_plugins_dir}/SetupUI/*.so
