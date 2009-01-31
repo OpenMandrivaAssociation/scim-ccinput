@@ -1,5 +1,5 @@
 %define version   0.3.1
-%define release   %mkrel 4
+%define release   %mkrel 5
 
 %define libname_orig lib%{name}
 %define libname %mklibname %{name} 0
@@ -13,6 +13,7 @@ License:   GPL
 URL:       http://www.scim-im.org
 Source0:   %{name}-%{version}.tar.bz2
 Patch0:	scim-ccinput-0.3.1-gcc43.patch
+Patch1: scim-ccinput-0.3.1-linkage.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:   scim-devel >= 1.4.7-3mdk
 BuildRequires:   automake, libltdl-devel
@@ -26,9 +27,9 @@ CCInput is another Pinyin input method for Chinese.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p0 -b .link
 
 %build
-[[ ! -x configure ]] && ./bootstrap
 %configure2_5x --disable-skim-support
 %make
 
@@ -36,7 +37,7 @@ CCInput is another Pinyin input method for Chinese.
 rm -rf $RPM_BUILD_ROOT
 # fix rpmlint warnings:
 chmod -x AUTHORS ChangeLog COPYING README
-%makeinstall_std mkinstalldirs='mkdir -p'
+%makeinstall_std
 
 # remove unnecessary files
 rm -f %{buildroot}%{scim_plugins_dir}/*/*.{a,la}
