@@ -1,4 +1,5 @@
 %define version   0.3.1
+%define subrel 1
 %define release   %mkrel 5
 
 %define libname_orig lib%{name}
@@ -14,9 +15,9 @@ URL:       http://www.scim-im.org
 Source0:   %{name}-%{version}.tar.bz2
 Patch0:	scim-ccinput-0.3.1-gcc43.patch
 Patch1: scim-ccinput-0.3.1-linkage.patch
+Patch2: scim-ccinput-0.3.1-svn-r116.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:   scim-devel >= 1.4.7-3mdk
-BuildRequires:   automake, libltdl-devel
 Obsoletes: %{libname}
 Requires: scim-client = %scim_api
 
@@ -28,6 +29,7 @@ CCInput is another Pinyin input method for Chinese.
 %setup -q
 %patch0 -p0
 %patch1 -p0 -b .link
+%patch2 -p2 -b .svn
 
 %build
 %configure2_5x --disable-skim-support
