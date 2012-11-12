@@ -1,0 +1,21 @@
+--- ./scim/IMEngine/scim_ccin_imengine.cpp~	2005-06-09 18:36:30.000000000 +0200
++++ ./scim/IMEngine/scim_ccin_imengine.cpp	2008-08-05 12:57:35.000000000 +0200
+@@ -48,6 +48,7 @@
+ #include <unistd.h>
+ #include <iostream>
+ #include <stdio.h>
++#include <libintl.h>
+ 
+ #ifdef HAVE_CONFIG_Hu
+   #include <config.h>
+--- ./scim/SetupUI/scim_ccin_imengine_setup.cpp~	2005-06-03 06:22:17.000000000 +0200
++++ ./scim/SetupUI/scim_ccin_imengine_setup.cpp	2008-08-05 12:59:13.000000000 +0200
+@@ -32,6 +32,8 @@
+ 
+ #include <stdio.h>
+ #include <iostream>
++#include <libintl.h>
++#include <cstring>
+ 
+ #ifndef INPUT_METHOD_NAME 
+   #define INPUT_METHOD_NAME "ccinput"

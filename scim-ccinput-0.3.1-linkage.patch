@@ -1,0 +1,65 @@
+--- scim/IMEngine/Makefile.am~	2005-05-25 21:58:56.000000000 +0200
++++ scim/IMEngine/Makefile.am	2009-01-31 14:11:56.000000000 +0100
+@@ -36,11 +36,10 @@
+ ccin_la_LDFLAGS        = -avoid-version -no-undefined\
+                           -rpath $(moduledir) \
+                           -module\
+-                          @LIBTOOL_EXPORT_OPTIONS@ \
+-                          @INTLLIBS@ \
+-                          @SCIM_LIBS@
++                          @LIBTOOL_EXPORT_OPTIONS@
+ 
+ ccin_la_LIBADD         = libgenerictable.la \
++			 @INTLLIBS@ @SCIM_LIBS@
+                          $(top_builddir)/src/libccinput.la
+ 
+ moduledir               = @SCIM_MODULEDIR@/IMEngine
+--- scim/IMEngine/Makefile.in~	2005-06-17 04:01:35.000000000 +0200
++++ scim/IMEngine/Makefile.in	2009-01-31 14:12:30.000000000 +0100
+@@ -193,12 +193,11 @@
+ ccin_la_LDFLAGS = -avoid-version -no-undefined\
+                           -rpath $(moduledir) \
+                           -module\
+-                          @LIBTOOL_EXPORT_OPTIONS@ \
+-                          @INTLLIBS@ \
+-                          @SCIM_LIBS@
++                          @LIBTOOL_EXPORT_OPTIONS@
+ 
+ 
+ ccin_la_LIBADD = libgenerictable.la \
++		 @INTLLIBS@ @SCIM_LIBS@ \
+                          $(top_builddir)/src/libccinput.la
+ 
+ 
+--- scim/SetupUI/Makefile.am~	2005-05-25 22:43:32.000000000 +0200
++++ scim/SetupUI/Makefile.am	2009-01-31 14:14:26.000000000 +0100
+@@ -35,6 +35,6 @@
+ ccin_imengine_setup_la_LDFLAGS = -avoid-version \
+ 			     	-rpath $(setupmoduledir) \
+ 				-module \
+-				@LIBTOOL_EXPORT_OPTIONS@ \
+-				@INTLLIBS@ \
++				@LIBTOOL_EXPORT_OPTIONS@
++ccin_imengine_setup_la_LIBADD  = @INTLLIBS@ @SCIM_GTKUTILS_LIBS@ \
+ 				@SCIM_LIBS@
+--- scim/SetupUI/Makefile.in~	2005-06-17 04:01:36.000000000 +0200
++++ scim/SetupUI/Makefile.in	2009-01-31 14:15:26.000000000 +0100
+@@ -192,8 +192,8 @@
+ ccin_imengine_setup_la_LDFLAGS = -avoid-version \
+ 			     	-rpath $(setupmoduledir) \
+ 				-module \
+-				@LIBTOOL_EXPORT_OPTIONS@ \
+-				@INTLLIBS@ \
++				@LIBTOOL_EXPORT_OPTIONS@
++ccin_imengine_setup_la_LIBADD = @INTLLIBS@ @SCIM_GTKUTILS_LIBS@ \
+ 				@SCIM_LIBS@
+ 
+ subdir = scim/SetupUI
+@@ -203,7 +203,6 @@
+ CONFIG_CLEAN_FILES =
+ LTLIBRARIES = $(setupmodule_LTLIBRARIES)
+ 
+-ccin_imengine_setup_la_LIBADD =
+ am_ccin_imengine_setup_la_OBJECTS = scim_ccin_imengine_setup.lo
+ ccin_imengine_setup_la_OBJECTS = $(am_ccin_imengine_setup_la_OBJECTS)
+ 
