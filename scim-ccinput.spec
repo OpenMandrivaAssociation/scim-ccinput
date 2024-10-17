@@ -10,7 +10,7 @@ Version:   %{version}
 Release:   %{release}
 Group:     System/Internationalization
 License:   GPL
-URL:       http://www.scim-im.org
+URL:       https://www.scim-im.org
 Source0:   %{name}-%{version}.tar.bz2
 Patch0:	scim-ccinput-0.3.1-gcc43.patch
 Patch1: scim-ccinput-0.3.1-linkage.patch
