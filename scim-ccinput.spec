@@ -16,6 +16,11 @@ Patch0:	scim-ccinput-0.3.1-gcc43.patch
 Patch1: scim-ccinput-0.3.1-linkage.patch
 Patch2: scim-ccinput-0.3.1-svn-r116.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:   scim-devel >= 1.4.7-3mdk
 Obsoletes: %{libname}
 Requires: scim-client = %scim_api
